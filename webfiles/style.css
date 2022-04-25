@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
+:root{
+    --scissors-grad1: hsl(39, 89%, 49%);
+    --scissors-grad2: hsl(40, 84%, 53%);
+    --paper-grad1: hsl(230, 89%, 62%);
+    --paper-grad2: hsl(230, 89%, 65%);
+    --rock-grad1: hsl(349, 71%, 52%);
+    --rock-grad2: hsl(349, 70%, 56%);
+    --dark-text: hsl(229, 25%, 31%);
+    --score-text: hsl(229, 64%, 46%);
+    --header-outline: hsl(217, 16%, 45%);
+    --bg-grad1: hsl(214, 47%, 23%);
+    --bg-grad2: hsl(237, 49%, 15%);
+    --active-outline1: hsla(217, 16%, 45%, 0.5);
+    --active-outline2: hsla(217, 16%, 45%, 0.2);
+    --active-outline3: hsla(217, 16%, 45%, 0.1);
+}
+*{
+    margin: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+html{
+    height: 100%;
+}
+body{
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    font-size: 16px;
+    background: radial-gradient(circle at center top, var(--bg-grad1), var(--bg-grad2));
+}
+/*------------------------------------------------------------------------------------------------*/
+/*------------------------------------------Score Panel-------------------------------------------*/
+header{
+    text-align: left;
+    margin: 35px auto;
+    padding: 1em;
+    padding-left: 1.8em;
+    width: 40%;
+    border: 2px solid var(--header-outline);
+    border-radius: 10px;
+}
+.logo{
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+.score{
+    padding: 1em;
+    height: 70px;
+    width: 105px;
+    float: right;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+h5{
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--score-text);
+}
+output{
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1em;
+    color: var(--dark-text);
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*----------------------------------------Picker Panel---------------------------------------------*/
+.picker{
+    position: relative;
+    margin: 0 auto;
+    width: 405px;
+    height: 360px;
+    background-image: url("images/bg-triangle.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%;
+}
+.hand{
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 200ms ease-in-out;
+}
+.hand:hover{
+    cursor: pointer;
+    transform-origin: center;
+    transform: scale(1.1);
+}
+.bg-white{
+    width: 75%;
+    height: 75%;
+    border-radius: 50%;
+    box-shadow: inset 0 10px rgba(0,0,0,0.3);
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rock{
+    bottom: -3%;
+    left: 27.5%;
+    box-shadow:
+        inset 0 -5px rgba(0,0,0,0.3),
+        0 0 10px 2px rgba(0,0,0,0.1),
+        0 5px rgba(0,0,0,0.3),
+        0 5px var(--rock-grad1);
+    background: linear-gradient(var(--rock-grad2), var(--rock-grad1));
+}
+.paper{
+    box-shadow:
+        inset 0 -5px rgba(0,0,0,0.3),
+        0 0 10px 2px rgba(0,0,0,0.1),
+        0 5px rgba(0,0,0,0.3),
+        0 5px var(--paper-grad1);
+    background: linear-gradient(var(--paper-grad2), var(--paper-grad1));
+}
+.scissors{
+    right: 0;
+    box-shadow:
+        inset 0 -5px rgba(0,0,0,0.3),
+        0 0 10px 2px rgba(0,0,0,0.1),
+        0 5px rgba(0,0,0,0.3),
+        0 5px var(--scissors-grad1);
+    background: linear-gradient(var(--scissors-grad2), var(--scissors-grad1));
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*----------------------------------------Result Panel---------------------------------------------*/
+.result{
+    position: absolute;
+    top: 35%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+.pick{
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.result .hand{
+    margin: 0 auto;
+    position: static;
+    flex-shrink: 0;
+    visibility: hidden;
+}
+.result .hand:hover{
+    cursor: default;
+}
+.pick h3{
+    font-size: 1.4rem;
+    margin-bottom: 3.5em;
+    color: white;
+}
+.pick-circle{
+    height: 180px;
+    width: 180px;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.txt-result{
+    visibility: hidden;
+}
+.txt-result h1{
+    font-size: 3rem;
+    margin-bottom: 0.3em;
+    color: white;
+}
+.txt-result button{
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--dark-text);
+    width: 200px;
+    height: 45px;
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 10px;
+}
+.txt-result button:hover{
+    color: var(--rock-grad2);
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------Rules Panel---------------------------------------------*/
+footer .btn{
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    height: 40px;
+    width: 115px;
+    border-radius: 10px;
+    border: 2px solid white;
+    color: white;
+    background-color: rgba(0,0,0,0);
+}
+footer .btn:hover{
+    box-shadow: 0 0 10px 10px rgba(0,0,0,0.3);
+    background-color: rgba(0,0,0,0.5);
+}
+.rules{
+    position: fixed;
+    width: 330px;
+    top: 25%;
+    left: calc(50% - 330px * 0.5);
+    padding-top: 2em;
+    border-radius: 10px;
+    background-color: white;
+    visibility:hidden;
+}
+.rules h1{
+    margin-left: 1em;
+    text-align: left;
+    color: var(--dark-text);
+}
+.rules img{
+    transform: scale(0.8);
+}
+.rules button{
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    border: none;
+    background-color: white;
+}
+.rules button img{
+    width: 30px;
+}
+.overlay{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.7);
+    display: none;
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*-----------------------------------------Animations----------------------------------------------*/
+.show{
+    animation: shower 500ms forwards;
+}
+.hide{
+    animation: shower 500ms reverse forwards;
+}
+@keyframes shower{
+    0%{
+        opacity: 0;
+        visibility: hidden;
+    }
+    100%{
+        opacity: 1;
+        visibility: visible;
+    }
+}
+.scale{
+    animation: scaler 300ms ease-out forwards;
+}
+@keyframes scaler{
+    0%{
+        transform: scale(0);
+        visibility: hidden;
+    }
+    100%{
+        transform: scale(1.2);
+        visibility: visible;
+    }
+}
+.offset-left{
+    transition: transform 1s ease-out;
+    transform: translateX(-100px);
+}
+.offset-right{
+    transition: transform 1s ease-out;
+    transform: translateX(100px);
+}
+.winner{
+    animation: shadower 1s ease infinite;
+}
+@keyframes shadower{
+    0%{
+        box-shadow: none;
+    }
+    25%{
+        box-shadow: 0 0 0 50px #ffffff10;
+    }
+    50%{
+        box-shadow: 0 0 0 50px #ffffff10,
+        0 0 0 80px #ffffff08;
+    }
+    75%{
+        box-shadow: 0 0 0 50px #ffffff10,
+            0 0 0 80px #ffffff08,
+            0 0 0 110px #ffffff04;
+    }
+    100%{
+        box-shadow: 0 0 0 50px #ffffff10,
+            0 0 0 80px #ffffff08,
+            0 0 0 110px #ffffff04;
+    }
+}
+/*-------------------------------------------------------------------------------------------------*/
+/*---------------------------------------Media Queries---------------------------------------------*/
+@media screen and (max-width: 1024px){
+    header{
+        width: 60%;
+    }
+    /* .result{
+        margin-left: 10%;
+        margin-right: 10%;
+    } */
+    .offset-left{
+        transform: translateX(-50px);
+    }
+    .offset-right{
+        transform: translateX(50px);
+    }
+}
+@media screen and (max-width: 780px){
+    header{
+        width: 70%;
+    }
+    .picker{
+        width: 337.5px;
+        height: 300px;
+    }
+    .hand{
+        width: 150px;
+        height: 150px;
+    }
+    .pick-circle{
+        height: 150px;
+        width: 150px;
+    }
+}
+@media screen and (max-width: 640px){
+    header{
+        padding: 0.75em;
+        width: 75%;
+    }
+    .logo img{
+        padding: 10px;
+        height: 70px;
+    }
+    .score{
+        padding: 0.75em;
+        width: 70px;
+    }
+    output{
+        font-size: 3rem;
+    }
+    .picker{
+        width: 270px;
+        height: 240px;
+    }
+    .hand{
+        width: 120px;
+        height: 120px;
+    }
+    .hand img{
+        height: 50%;
+    }
+    .bg-white{
+        box-shadow: inset 0 5px rgba(0,0,0,0.3);
+    }
+    .rock{
+        box-shadow:
+            inset 0 -2.5px rgba(0,0,0,0.3),
+            0 0 5px 1px rgba(0,0,0,0.1),
+            0 2.5px rgba(0,0,0,0.3),
+            0 2.5px var(--rock-grad1);
+    }
+    .paper{
+        box-shadow:
+            inset 0 -2.5px rgba(0,0,0,0.3),
+            0 0 5px 1px rgba(0,0,0,0.1),
+            0 2.5px rgba(0,0,0,0.3),
+            0 2.5px var(--paper-grad1);
+    }
+    .scissors{
+        box-shadow:
+            inset 0 -2.5px rgba(0,0,0,0.3),
+            0 0 5px 1px rgba(0,0,0,0.1),
+            0 2.5px rgba(0,0,0,0.3),
+            0 2.5px var(--scissors-grad1);
+    }
+    .result{
+        height: 50%;
+        flex-wrap: wrap;
+    }
+    .txt-result{
+        order: 3;
+    }
+    .pick{
+        width: 50%;
+        flex-direction: column-reverse;
+    }
+    .pick h3{
+        margin: 0;
+        margin-top: 1.5em;
+        font-size: 1.2rem;
+    }
+    .pick-circle{
+        height: 120px;
+        width: 120px;
+    }
+    .offset-left{
+        transform: none;
+    }
+    .offset-right{
+        transform: none;
+    }
+}
+@media screen and (max-width: 500px) {
+    header{
+        width: 85%;
+    }
+    .picker{
+        width: 202.5px;
+        height: 180px;
+    }
+    .hand{
+        width: 90px;
+        height: 90px;
+    }
+    .pick-circle{
+        height: 90px;
+        width: 90px;
+    }
+    footer .btn{
+        bottom: 10px;
+        right: calc(50% - 115px * 0.5);
+    }
+    .rules{
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .rules h1{
+        margin: 0;
+        text-align: center;
+    }
+    .rules img{
+        position: relative;
+        top: 25%;
+    }
+    .rules button{
+        position: fixed;
+        top: unset;
+        bottom: 25px;
+        right: calc(50% - 30px * 0.5);
+    }
+    .rules button img{
+        width: 30px;
+    }
+}
