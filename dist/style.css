@@ -76,7 +76,7 @@ output{
     margin: 0 auto;
     width: 405px;
     height: 360px;
-    background-image: url("/images/bg-triangle.svg");
+    background-image: url("images/bg-triangle.svg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: 60%;
