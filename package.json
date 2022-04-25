@@ -1,0 +1,15 @@
+{
+  "name": "handgametest",
+  "version": "1.0.0",
+  "description": "Frontend Mentor challeng solution",
+  "main": "script.js",
+  "scripts": {
+    "deploy": "gh-pages -d ."
+  },
+  "author": "@devEngAmeer",
+  "license": "MIT",
+  "homepage": "https://devEngAmeer.github.io/hand-game-website",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
