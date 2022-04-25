@@ -4,10 +4,11 @@
   "description": "Frontend Mentor challeng solution",
   "main": "script.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "deploy": "gh-pages -d dist"
   },
   "author": "@devEngAmeer",
   "license": "MIT",
+  "homepage": "https://devEngAmeer.github.io/hand-game-website",
   "dependencies": {
     "gh-pages": "^3.2.3"
   }
